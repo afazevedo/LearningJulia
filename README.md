@@ -27,3 +27,7 @@ Agora, no espaço escrito `Search packages` procure por `uber-juno` .
 Clique nesse pacote e coloque para instalar.
 
 Reinicie o Atom.
+
+Vá em `File` -> `Config`
+Adicione uma linha, abaixo de "firstBoot: false":
+juliaPath: "C:\\Users\\mndzv\\AppData\\Local\\Programs\\Julia\\Julia-1.4.2\\bin\\julia.exe"
