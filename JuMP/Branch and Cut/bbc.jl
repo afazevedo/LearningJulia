@@ -1,30 +1,9 @@
-using Gurobi, CPLEX, JuMP, MathOptInterface, MathProgBase, DelimitedFiles, Parsers
+using Gurobi, JuMP, MathOptInterface, MathProgBase, DelimitedFiles, Parsers
 
-function leitura_head()
-  path = "f6_l-d_kp_10_60.txt"
-  arq = readdlm(path, ' ', header=true, Int64)
-  head = arq[2] #lendo a primeira linha
-  n = parse(Int64, head[1]) #número de itens
-  W = parse(Int64, head[2]) #capacidade máxima da mochila
-  #ind = collect(Int32, 1:2)
-    return n, W
-end
-
-
-function leitura_data(v,w)
-  path = "f6_l-d_kp_10_60.txt"
-  arq = readdlm(path, ' ', header=true, Int64)
-  data = arq[1] #lendo o resto da matriz
-
-  for i in 1:10
-    v[i] = data[i,1]
-    w[i] = data[i,2]
-  end
-  #v = data[:,1] #preenchendo v
-  #w = data[:,2] #preenchendo w
-  println(v)
-  println(w)
-  println("aqui")
+function leitura(n)
+  ind = collect(Int32, 1:n)
+  c = ones(n)
+    return ind, c
 end
 
 
@@ -36,21 +15,19 @@ function cb(cb_data, cb_where)
     #Callback Presolve
     cdels = cbget_pre_coldel(cb_data, cb_where)
     rdels = cbget_pre_rowdel(cb_data, cb_where)
+    println(cdels, " colunas e ", rdels, " linhas foram removidas")
 
-    println(cdels, "colunas e ", rdels, "linhas foram removidos\n")
   elseif cb_where == CB_SIMPLEX
     #Simplex Callback
-
     itcnt = cbget_spx_itrcnt(cb_data, cb_where)
     obj = cbget_spx_objval(cb_data, cb_where)
     ispert = cbget_spx_ispert(cb_data, cb_where)
     pinf = cbget_barrier_priminf(cb_data, cb_where)
     dinf = cbget_barrier_dualinf(cb_data, cb_where)
-
     #println(itcnt, obj, ispert, pinf, dinf)
+
   elseif cb_where == CB_MIP
   #MIP callback
-
     nodecnt = cbget_mip_nodcnt(cb_data, cb_where)
     objbst = cbget_mip_objbst(cb_data, cb_where)
     objbnd = cbget_mip_objbst(cb_data, cb_where)
@@ -58,72 +35,61 @@ function cb(cb_data, cb_where)
     actnodes = cbget_mip_nodlft(cb_data, cb_where)
     itcnt = cbget_mip_itrcnt(cb_data, cb_where)
     cutcnt = cbget_mip_cutcnt(cb_data, cb_where)
-
     #println(nodecnt, actnodes, itcnt, objbst, objbnd, solcnt, cutcnt)
 
   elseif cb_where == CB_MIPSOL
   #MIPSOL callback
-
     nodecnt = cbget_mipsol_nodcnt(cb_data, cb_where)
     obj = cbget_mipsol_obj(cb_data, cb_where)
     solcnt = cbget_mipsol_solcnt(cb_data, cb_where)
     solution = cbget_mipsol_sol(cb_data, cb_where)
-
   #println("**** Nova Solução no nó ", nodecnt, " obj= ", obj, " sol = ", solcnt, " *****")
 
   elseif cb_where == CB_MIPNODE
   #MIPNODE callback
+    eps = 0.0001
+    n = 2
     println("**** Novo nó! ****");
     println("Nó: ", cbget_mipnode_nodcnt(cb_data, cb_where))
     status = cbget_mipnode_status(cb_data, cb_where)
-    if status == 2
-      x_val = cbget_mipnode_rel(cb_data, cb_where)
-      sum = 0
-      for i in 1:n
-          sum = sum + v[i]*x_val[i]
+    if status == 2 #optimal
+      x_val, y_val = cbget_mipnode_rel(cb_data, cb_where)
+      #A solução da relaxação irá ser (1.5, 2.0)
+      #Podemos adicionar um corte que retire essa solução fracionária
+      if x_val + y_val > 3 + eps
+        #impressão do corte
+        println("Corte: ", x_val, " + ", y_val, " < 3")
+        ind, c = leitura(n)
+        cbcut(cb_data, ind, c, '<', 3.0)
       end
-      println(sum)
-      ind = collect(Int32, 1:n)
-      b = float(v)
-      println(ceil(sum))
-      cbcut(cb_data, ind, b, '<', ceil(sum))
     end
   end
 end
 
 
 m = Model(Gurobi.Optimizer)
-
 set_optimizer_attribute(m, "PreCrush", 1) #Para usar UserCuts
 set_optimizer_attribute(m, "Cuts", 0) #Desabilitar outros cortes
 set_optimizer_attribute(m, "Presolve", 0) #Desabilitar presolve
 set_optimizer_attribute(m, "Heuristics", 0) #Desabilitar heurística
 #set_optimizer_attribute(m, "OutputFlag", 0) #Desabilitar log
 
-n, W = leitura_head()
-
-v = zeros(Int64, n)
-w = zeros(Int64, n)
-
-leitura_data(v, w)
-
-I = 1:n
 
 # Variáveis
-@variable(m, x[i in I], Bin)
-
+@variable(m, 0 <= x <= 2, Int)
+@variable(m, 0 <= y <= 2, Int)
 
 # Função Objetivo
-@objective(m, Max, sum(v[i] * x[i] for i in I))
+@objective(m, Max, x + 2*y)
 
 # Restrição
-@constraint(m, knp, sum(w[i] * x[i] for i in I) <= W)
+@constraint(m, y + x <= 3.5)
 
 MOI.set(m, Gurobi.CallbackFunction(), cb)
 
 # Resolver o problema
 optimize!(m)
 
-# Print our final solution
-#println("Final solution: x= ", value(x),"y= ", value(y))
+# Solução final
+println("x = ", value(x), " y = ", value(y))
 println("O custo ótimo foi: ", objective_value(m))
