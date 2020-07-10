@@ -4,13 +4,14 @@ Linguagem: Julia
 =#
 
 #=
-Como uma string, uma lista é uma sequência de valores.
+Como uma string, um array é uma sequência de valores.
 Em uma string, os valores são caracteres;
-em uma lista, eles podem ser de qualquer tipo.
-Os valores em uma lista são chamados de elementos, ou, algumas vezes, de itens.
+em uma array, eles podem ser de qualquer tipo.
+Os valores de um array são chamados de elementos, ou, algumas vezes, de itens.
+Podemos chamar também um array unidimensional de lista
 =#
 
-#=Há várias formas para criar uma lista;
+#=Há várias formas para criar um array;
 a mais simples é colocar os elementos entre colchetes [ ]: =#
 
 [1, 2, 3, 4]
@@ -54,7 +55,7 @@ numeros[2] = 5
 println(numeros)
 
 #=
-Pedaços de Listas.
+Pedaços de Array
 O operador fatia também funciona com listas. Exemplo:
 =#
 
@@ -139,6 +140,17 @@ println(l)
 l = ["curso", "de", "julia"]
 s = join(l, ' ')
 println(s)
+
+
+#Agora suponha que queiramos criar uma array bidimensional, isto é, uma matriz
+
+matriz = [1 2 3; 2 3 4; 2 3 4]
+
+#Criamos uma matriz 3x3. Existem algumas funções que criam matrizes específicas, por exemplo:
+
+ones(3,4) #Cria uma matriz 3x4 de float64 de "uns"
+zeros(Int64, 5,5) #Cria uma matriz de valores inteiros de zeros 5x5
+rand(1:10, 2,3) #Cria uma matriz de valores aleatórios no intervalo de 1 a 10, 2x3
 
 
 #Exercícios
