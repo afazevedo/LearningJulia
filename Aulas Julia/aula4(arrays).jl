@@ -1,4 +1,9 @@
 #=
+Aula 4: Arrays
+Linguagem: Julia
+=#
+
+#=
 Como uma string, uma lista é uma sequência de valores.
 Em uma string, os valores são caracteres;
 em uma lista, eles podem ser de qualquer tipo.
