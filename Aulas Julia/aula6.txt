@@ -1,2 +1,0 @@
-Olá mundo!
- Aprendendo a escrever em arquivos.
