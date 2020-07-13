@@ -41,9 +41,6 @@ Aqui entram as variáveis. Elas servem para carregar alguma informação que voc
 fruta = "maçã" #variável que contém uma string
 altura = 1.66 #variável que contém um número do tipo flutuante
 
-println(fruta)
-println(altura)
-
 #Existem algumas regras pra se poder criar nomes de variáveis, mostro aqui algumas em que evitaremos:
 
 nome = "teste"
@@ -63,14 +60,16 @@ Poderemos fazer isso utilizando a função input(), da seguinte maneira:
 #Exemplo:
 
 println("Qual sua fruta favorita?") #pergunta ao usuário
-fruta = input() #armazena na variável fruta o que o usuário digitar
-println(fruta) #imprime na tela a fruta escolhida
+fruta = readline() #armazena na variável fruta o que o usuário digitar
+println("Gosto da fruta ", fruta) #imprime na tela a fruta escolhida
 
 #=
 Temos muitas formas de imprimir variáveis. Como por exemplo:
 =#
-nome = input("Qual seu nome?\n")
-peso = input("Qual seu peso?\n") #\n é usado para pular linha!
+println("Qual seu nome?")
+println("Qual seu peso?")
+nome = readline()
+peso = readline() 
 
 println("Meu nome é ", nome)
 println("Tenho peso igual a ", peso)
@@ -124,18 +123,16 @@ println(c)
 println(typeof(c))
 
 #E finalmente, para converter uma string em outro tipo, use a biblioteca Parses
-using Parses
+using Parsers
 
 inteiro = parse(Int64, "32")
 frac = parse(Float64, "3.999")
 #Erro: palavra = parse(Int64, "Hello") pois não podemos converter hello em um número inteiro.
 
-#Obs: Como a saída da função input é sempre uma string, é interessante fazermos a seguinte conversão:
-peso = parse(Int64, input("Qual seu peso?\n")) #\n é usado para pular linha!
-println(typeof(peso))
 
 #E para consertar aquele exemplo, podemos fazer:
-println(trunc(24/2))
+n = 24/2
+println(Int(n))
 
 
 #Exercícios

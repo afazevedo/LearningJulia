@@ -76,12 +76,13 @@ A forma mais simples é a instrução if, que tem como objetivo executar um bloc
 pré-definida for verdadeira, um exemplo:
 =#
 
-x = parse(Int64, input("Digite um número:"))
+x = 2
 
 if x > 0
-  print("é positivo\n")
+  println("é positivo\n")
 end
-#print("sempre acontece")
+
+
 #=
 Execução Alternativa
 Uma segunda forma da instrução if é a “execução alternativa”, na qual há duas possibilidades
@@ -90,7 +91,7 @@ que nos indica uma alternativa contrária caso a primeira não seja satisfeita.
 A sintaxe é da seguinte maneira:
 =#
 
-x = parse(Float64, (input("Digite um número")))
+x = 3
 
 if x % 2 == 0
   println(x, " é par")
@@ -113,9 +114,8 @@ Utilizamos o elseif. Não há nenhum limite para o número de instruções elsei
 Entretanto, se houver uma cláusula else, ela deve estar no fim, mas não é preciso haver uma.
 =#
 
-print("Digite dois números:\n")
-x = parse(Int64, input("Digite um número:\n"))
-y = parse(Int64, input("Digite um outro número:\n"))
+x = 2
+y = 3
 
 if x < y
   println(x, " é estritamente menor que ", y)
@@ -132,9 +132,8 @@ Isto é, é possível utilizar condicionais dentro de outras condicionais.
 Utilizando o mesmo exemplo anterior:
 =#
 
-println("Digite dois números:")
-x = parse(Int64, input("Digite um número:\n"))
-y = parse(Int64, input("Digite um outro número:\n"))
+x = 2
+y = 3
 
 if x == y
   println("são iguais")
@@ -149,39 +148,19 @@ end
 
 #Exercícios
 
-#=Exercício 1: Faça um programa que leia um número
-e exiba o dia correspondente da semana. (1-Domingo, 2- Segunda, etc.),
+#=Exercício 1: Faça um programa que a partir de um número de 1-10
+exiba o dia correspondente da semana. (1-Domingo, 2- Segunda, etc.),
 se digitar outro valor deve aparecer valor inválido. =#
-
-num = parse(Int64, input("Digite um número de 1-7:\n"))
-
-if num == 1
-  println("Domingo!")
-elseif num == 2
-  println("Segunda!")
-elseif num == 3
-  println("Terça-feira!")
-elseif num == 4
-  println("Quarta-feira!")
-elseif num == 5
-  println("Quinta-feira!")
-elseif num == 6
-  println("Sexta-feira!")
-elseif num == 7
-  println("Sábado!")
-else
-  println("Valor inválido.")
-end
 
 
 
 #=Exercício 2:
-Faça uma calculadora. Leia dois números que o usuário irá digitar e uma string de operação.
+Faça uma calculadora. Dados dois números e uma operação, mostre o cálculo adequeado. 
 
-Se o usuário digitar "+" então retornará a soma desses dois números.
-Se o usuário digitar "-" então retornará a subtração desses dois números.
-Se o usuário digitar "*" então retornará a multiplicação desses dois números.
-Se o usuário digitar "/" então retornará a divisão desses dois números.
+Se "+" então retornará a soma desses dois números.
+Se "-" então retornará a subtração desses dois números.
+Se "*" então retornará a multiplicação desses dois números.
+Se "/" então retornará a divisão desses dois números.
 =#
 
 #=Exercício 3:

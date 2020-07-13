@@ -80,7 +80,7 @@ while true
     println("Bem vindo ao menu!")
     println("Digite 1 para escolher imprimir na tela olá!")
     println("Digite 2 para escolher sair do programa")
-    op = input("\n")
+    op = readline()
     if op == "2"
         break
     end
