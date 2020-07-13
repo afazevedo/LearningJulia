@@ -1,73 +1,16 @@
-# Instalação de Julia+Atom+Juno
+# Learning Julia
 
-### Para windows:
+Este é um repositório de códigos em Julia, no intuito de ajudar no aprendizado da linguagem, focando principalmente, em resolver problemas de otimização inteira e combinatória.
 
->  Baixar Julia no seguinte repositório:
-
-https://julialang.org/downloads/
-
-Instalar o arquivo baixado .exe 
-
->  Baixar o Atom no site:
-
-https://atom.io/
-
-Instalar o arquivo baixado .exe
-
-> Instalar Juno
-
-Ao abrir o Atom, vá em `Packages` -> `Settings View` -> `Install Packages`
-
-Irá abrir uma aba de `Settings`.
-
-Agora, no espaço escrito `Search packages` procure por `uber-juno` .
-
-Clique nesse pacote e coloque para instalar.
-
-Reinicie o Atom.
-
-Aparecerá uma opção "juno" no Atom. 
-
-Vá para `Juno ->   ` `Settings `
-
-Verifique se no campo Julia Path está configurado o caminho até o binário requerido.
-
-Exemplo: C:\Users\nome_do_user\AppData\Local\Programs\Julia\Julia-1.4.2\bin\julia.exe
+- Na pasta `Aulas Particulares` se encontra um material de uso básico da linguagem, que uso em minhas aulas particulares
+- Na pasta `Exemplos(JuMP)` se encontra alguns exemplos utilizando a biblioteca JuMP, como uso de métodos como branch-and-cut, relaxação lagrangeana, entre outros.
+- Na pasta `Otimização Combinatória` se encontra materiais utilizados nas aulas que dei na UFRJ introduzindo a biblioteca JuMP na matéria de otimização combinatória
+- O arquivo `julia+vscode` é um tutorial para utilizar a linguagem no vscode
+- O arquivo `julia+atom+juno` é um tutorial para utilizar a linguagem no atom, por meio do juno
 
 
 
-### Para Linux
+Se puder, dê uma estrela clicando no botão a direita `star` para ajudar o repositório :) 
 
->  Baixar Julia no seguinte repositório:
 
-https://julialang.org/downloads/
 
-Escolha por: Generic Linux Binaries for x86
-
-Mova o arquivo para o diretório home.
-
-Abra o terminal nessa pasta e utilize o comando:  `tar -xzf julia-1.4.2-linux-x86_64.tar.gz` para descompactar.
-
->  Baixar o Atom no site:
-
-https://atom.io/
-
-Instalar o arquivo baixado .deb
-
-Para instalar, basta usar o comando `sudo dpkg -i nome_do_arquivo.deb`
-
-> Instalar Juno
-
-Ao abrir o Atom, vá em `Packages` -> `Settings View` -> `Install Packages`
-
-Irá abrir uma aba de `Settings`.
-
-Agora, no espaço escrito `Search packages` procure por `uber-juno` .
-
-Clique nesse pacote e coloque para instalar.
-
-Reinicie o Atom.
-
-Vá em `File` -> `Config`
-Adicione uma linha, abaixo de "firstBoot: false":
-juliaPath: "C:\\Users\\mndzv\\AppData\\Local\\Programs\\Julia\\Julia-1.4.2\\bin\\julia.exe"

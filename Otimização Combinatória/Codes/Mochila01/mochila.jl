@@ -1,8 +1,9 @@
 using Gurobi, JuMP, DelimitedFiles, Parsers
+
 include("functions.jl")
 
 #Dados
-path = "knp_5_60.txt"
+path = "C:\\Users\\mndzv\\Documents\\Mestrado\\julia\\JuMP\\AulaOC\\Mochila01\\knp_5_60.txt"
 n = readdlm(path, Int64)[1]
 
 a = zeros(Int64, n)
