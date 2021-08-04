@@ -8,5 +8,5 @@ Este é um repositório de códigos em Julia, no intuito de ajudar no aprendizad
 
 Se puder, dê uma estrela clicando no botão a direita `star` para ajudar o repositório :) 
 
-
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/afazevedo/learning-julia/HEAD)
 
