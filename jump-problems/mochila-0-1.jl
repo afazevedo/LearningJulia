@@ -1,4 +1,4 @@
-using Gurobi, JuMP, DelimitedFiles, Parsers
+using Gurobi, JuMP
 
 n = 5 # Número de itens 
 W = 50 # Peso máximo que a mochila pode carregar
