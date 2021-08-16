@@ -2,9 +2,10 @@
 
 Este é um repositório de códigos em Julia, no intuito de ajudar no aprendizado da linguagem.
 
-- Na pasta `intro-julia`  é encontrado materiais para o aprendizado da linguagem, que uso em minhas aulas particulares
-- Na pasta `codes` se encontra alguns exemplos utilizando a biblioteca JuMP, como uso de métodos como branch-and-cut, relaxação lagrangeana, entre outros.
-- Na pasta ``tutorials`` é encontrado tutoriais de como instalar o software e o solver, dependendo do editor de texto. (Atom ou Vscode) 
+- Na pasta `jump-problems` se encontra alguns exemplos utilizando a biblioteca JuMP.
+- Na pasta `relaxacao-lagrangeana`, encontra um exemplo do livro *Julia Programming for Operations Research* do uso do JuMP para resolver um problema de fluxo em redes com relaxação lagrangeana.
+- O arquivo `branch_and_cut_example` é um exemplo do uso do método branch-and-cut, retirado da documentação oficial do JuMP. 
+- O arquivo `tutorial-julia` é um pdf contendo slides de como utilizar, instalar e configurar o ambiente para o uso da linguagem de programação Julia.
 
 Se puder, dê uma estrela clicando no botão a direita `star` para ajudar o repositório :) 
 
