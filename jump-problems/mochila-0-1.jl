@@ -24,12 +24,6 @@ optimize!(model)
 
 #Informando a solução
 soma = 0
-for i in 1:n
-    if value(x[i]) == 1
-        println("Item ", i, " foi escolhido, com peso: ", a[i], " e custo: ", c[i])
-        soma = soma + a[i]
-    end
-end
 
 println("Soma dos pesos dos itens escolhidos: ", soma)
 println("Capacidade máxima da mochila: ", W)
