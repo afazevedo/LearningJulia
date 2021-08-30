@@ -7,7 +7,6 @@ c = [
 18 12 0 11
 23 32 12 0
 ]
-
 n = 4
 
 #Modelo
@@ -18,10 +17,11 @@ model = Model(Gurobi.Optimizer)
 
 #Restrições
 @constraint(model, one_person[i in 1:n], sum(x[i,j] for j in 1:n if i != j) == 1)
-@constraint(model, one_job[j in 1:n], sum(x[i,j] for i in 1:n if i!=j) == 1)
+@constraint(model, one_job[j in 1:n], sum(x[i,j] for i in 1:n if i != j) == 1)
 
 #Função Objetivo
 @objective(model, Min, sum(c[i,j]*x[i,j] for i in 1:n, j in 1:n if i != j))
+print(model)
 
 #Otimiza
 print(model)
@@ -35,4 +35,5 @@ for i in 1:n
         end
     end
 end
+
 println("O custo ótimo foi: ", objective_value(model))

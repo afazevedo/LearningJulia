@@ -13,19 +13,19 @@ c = [10 40 20 30]
 M = 1:5
 N = 1:4
 
-#Modelo
-model = Model(Gurobi.Optimizer)
+m = Model(Gurobi.Optimizer)
 
-#Variáveis
-@variable(model, x[j in N], Bin)
 
-#Restrições
-@constraint(model, cover[i in M], sum(a[i,j]*x[j] for j in N) >= 1)
+@variable(m, x[j in N], Bin)
 
-#Função Objetivo
-@objective(model, Min, sum(c[j]*x[j] for j in N))
+@constraint(m, cover[i in M], sum(a[i,j]*x[j] for j in N) >= 1)
 
-#Otimiza
-print(model)
-optimize!(model)
+@objective(m, Min, sum(c[j]*x[j] for j in N))
 
+print(m)
+
+optimize!(m)
+
+println(value.(x))
+
+println(objective_value(m))
