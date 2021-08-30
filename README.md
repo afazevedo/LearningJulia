@@ -11,4 +11,4 @@ Este é um repositório de códigos em Julia, no intuito de ajudar no aprendizad
 - O arquivo `tutorial-julia` é um pdf contendo slides de como utilizar, instalar e configurar o ambiente para o uso da linguagem de programação Julia.
 
 
-
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/afazevedo/learning-julia/HEAD?filepath=https%3A%2F%2Fgithub.com%2Fafazevedo%2Flearning-julia%2Fblob%2Fmaster%2FJuliaMinicurso.ipynb)
