@@ -1,5 +1,36 @@
 using JuMP, Gurobi, DelimitedFiles
 
+u = zeros(n,h,n)
+x = zeros(n,h)   
+
+
+print(sum(x[i,j] for i in V, j in V) + sum(u*ijsdasjdijas))
+
+
+function subproblema(u,n,h,a)
+#limite inferior
+end
+
+function heuristica_viavel()
+#limite superior
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 global p = 3
 num_cli = readdlm("C:\\Users\\mndzv\\Documents\\Mestrado\\julia\\JuMP\\Relaxação Lagrangeana\\ufl_c5_f5.txt")[1,1]
 num_fac = readdlm("C:\\Users\\mndzv\\Documents\\Mestrado\\julia\\JuMP\\Relaxação Lagrangeana\\ufl_c5_f5.txt")[1,2]
