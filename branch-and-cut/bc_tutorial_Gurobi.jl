@@ -1,4 +1,5 @@
-using Gurobi, JuMP, MathOptInterface, MathProgBase, DelimitedFiles, Parsers
+using Gurobi, JuMP
+
 
 function leitura(n)
   ind = collect(Int32, 1:n)
@@ -73,7 +74,6 @@ set_optimizer_attribute(m, "Cuts", 0) #Desabilitar outros cortes
 set_optimizer_attribute(m, "Presolve", 0) #Desabilitar presolve
 set_optimizer_attribute(m, "Heuristics", 0) #Desabilitar heurística
 #set_optimizer_attribute(m, "OutputFlag", 0) #Desabilitar log
-
 
 # Variáveis
 @variable(m, 0 <= x <= 2, Int)
