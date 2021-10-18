@@ -17,10 +17,9 @@ Parâmetros: https://www.gurobi.com/documentation/9.1/refman/parameters.html
 function my_callback_function_lazy(cb_data)
     x_val = callback_value(cb_data, x)
     y_val = callback_value(cb_data, y)
+
     println("(x, y) = ($x_val, $y_val)")
     status = MOI.get(model, MOI.CallbackNodeStatus(cb_data))
-    
-    println("Gap:", MOI.get(modelo, MOI.NodeCount(cb_data)))
 
     if status == MOI.CALLBACK_NODE_STATUS_FRACTIONAL
         println(" - Solução é fracionária!")
@@ -36,7 +35,7 @@ function my_callback_function_lazy(cb_data)
         println("Adding $(con)")
         MOI.submit(model, MOI.LazyConstraint(cb_data), con)
     elseif y_val + x_val >= 3 
-        con = @build_constraint(y - x <= 1)
+        con = @build_constraint(y + x <= 2)
         println("Adding $(con)")
         MOI.submit(model, MOI.LazyConstraint(cb_data), con)
     end
@@ -62,8 +61,11 @@ println("Optimal solution (x, y) = ($(value(x)), $(value(y)))")
 
 #===========================================================================================================#
 
+
+
 function my_callback_function(cb_data)
     x_vals = callback_value.(Ref(cb_data), x)
+    println("Relaxação linear", x_vals)
     accumulated = sum(item_weights[i] for i in 1:N if x_vals[i] > 0)
     println("Acumulado = $(accumulated)")
     n_terms = sum(1 for i in 1:N if x_vals[i] > 0)
