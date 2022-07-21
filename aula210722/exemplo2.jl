@@ -1,3 +1,11 @@
+# Problema de Atribuição
+using JuMP, Gurobi, GLPK
+
+#= Exemplo 2 - Problema de Atribuição
+Amanda Ferreira de Azevedo
+afazevedo@cos.ufrj.br
+=#
+
 #Dados
 c = [
 35 20 15 12
@@ -35,3 +43,5 @@ for i in 1:n
 end 
 
 println("O valor da função objetivo foi:", objective_value(model))
+
+# print(model)
