@@ -1,4 +1,4 @@
-using Gurobi, JuMP
+using Gurobi, JuMP, DelimitedFiles
 
 n = 5 # Número de itens 
 b = 50 # Peso máximo que a mochila pode carregar
@@ -10,15 +10,13 @@ c = [30 11 20 18 17] # Custo de cada item
 model = Model(Gurobi.Optimizer)
 
 #Variáveis
-@variable(model, x[j in 1:n]>=0, Int)
+@variable(model, x[j in 1:n], Bin)
 
 #Restrições
 @constraint(model, sum(a[j]*x[j] for j in 1:n) <= b)
 
 #Função Objetivo
 @objective(model, Max, sum(c[j]*x[j] for j in 1:n))
-
-print(model)
 
 #Otimiza
 print(model)

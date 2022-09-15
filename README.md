@@ -10,5 +10,13 @@ Este é um repositório de códigos em Julia, no intuito de ajudar no aprendizad
 - Na pasta `branch-and-cut` tem um exemplo do uso do método branch-and-cut, retirado da documentação oficial do JuMP, além de um tutorial geral de como implementar. 
 - O arquivo `tutorial-julia` é um pdf contendo slides de como utilizar, instalar e configurar o ambiente para o uso da linguagem de programação Julia.
 
+----------------------------
+
+Para monitoria 2022:
+- https://github.com/Retsediv/ChristofidesAlgorithm
+- https://jump.dev/JuMP.jl/stable/tutorials/algorithms/tsp_lazy_constraints/
+- http://www.math.chalmers.se/Math/Grundutb/CTH/mve165/1112/Lectures/TSPLecture-120426.pdf
+- https://github.com/EliasBcd/SimpleGraphs.jl
+
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/afazevedo/learning-julia/HEAD?filepath=JuliaMinicurso.ipynb)
