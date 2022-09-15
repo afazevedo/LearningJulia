@@ -1,10 +1,9 @@
-# Problema de Atribuição
-using JuMP, Gurobi, GLPK
-
 #= Exemplo 2 - Problema de Atribuição
 Amanda Ferreira de Azevedo
 afazevedo@cos.ufrj.br
 =#
+
+using JuMP, Gurobi, GLPK
 
 #Dados
 c = [
