@@ -17,7 +17,6 @@ Para monitoria 2022:
 - https://github.com/Retsediv/ChristofidesAlgorithm
 - https://jump.dev/JuMP.jl/stable/tutorials/algorithms/tsp_lazy_constraints/
 - http://www.math.chalmers.se/Math/Grundutb/CTH/mve165/1112/Lectures/TSPLecture-120426.pdf
-- https://github.com/EliasBcd/SimpleGraphs.jl
 
 
 ### Alguns pacotes interessantes para usar com o JuMP
