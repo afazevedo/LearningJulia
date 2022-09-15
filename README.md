@@ -18,6 +18,8 @@ Para monitoria 2022:
 - https://jump.dev/JuMP.jl/stable/tutorials/algorithms/tsp_lazy_constraints/
 - http://www.math.chalmers.se/Math/Grundutb/CTH/mve165/1112/Lectures/TSPLecture-120426.pdf
 
+----------------------------
+
 
 ### Alguns pacotes interessantes para usar com o JuMP
 
