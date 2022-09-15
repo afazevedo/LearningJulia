@@ -1,4 +1,4 @@
-# Learning Julia
+# Aprendendo Julia
 
 Se puder, dê uma estrela clicando no botão `star`🌟 para ajudar o repositório :) 
 
