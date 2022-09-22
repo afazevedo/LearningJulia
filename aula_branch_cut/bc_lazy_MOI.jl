@@ -2,7 +2,7 @@
 Arquivo para mostrar funcionalidade de lazy constraints no Gurobi
 Autor: Amanda Ferreira de Azevedo
 Data: 20/09/2020
-=# 
+=#
 
 using Gurobi, JuMP, MathOptInterface
 
@@ -30,15 +30,17 @@ function my_callback_function_lazy(cb_data)
         println(" Não sei se a solução é inteira.")
     end
 
-    if y_val - x_val > 1 
+
+    if y_val - x_val > 1
         con = @build_constraint(y - x <= 1)
         println("Adicionando: $(con)")
         MOI.submit(model, MOI.LazyConstraint(cb_data), con)
-    elseif y_val + x_val >= 3 
+    elseif y_val + x_val >= 3
         con = @build_constraint(y + x <= 2)
         println("Adicionando: $(con)")
         MOI.submit(model, MOI.LazyConstraint(cb_data), con)
     end
+    return
 end
 
 model = Model(Gurobi.Optimizer)

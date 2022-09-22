@@ -20,49 +20,70 @@ function cb(cb_data, cb_where::Cint)
     elseif cb_where == GRB_CB_SIMPLEX #Simplex Callback
         resultP = Ref{Cint}()
         GRBcbget(cb_data, cb_where, GRB_CB_SPX_ITRCNT, resultP) # Current simplex iteration count.
-        itcnt = resultP[] 
+        itcnt = resultP[]
         GRBcbget(cb_data, cb_where, GRB_CB_SPX_OBJVAL, resultP) # Current simplex objective value.
         obj = resultP[]
         GRBcbget(cb_data, cb_where, GRB_CB_SPX_PRIMINF, resultP) # Primal infeasibility measure.
-        pinf = resultP[] 
+        pinf = resultP[]
         GRBcbget(cb_data, cb_where, GRB_CB_SPX_DUALINF, resultP) # Dual infeasibility measure.
-        dinf = resultP[] 
-        println("Iteracao ", itcnt, ": obj = ", obj, " pinf = ", pinf, " dinf = ", dinf) 
+        dinf = resultP[]
+        println("Iteracao ", itcnt, ": obj = ", obj, " pinf = ", pinf, " dinf = ", dinf)
     elseif cb_where == GRB_CB_MIP #MIP callback
         resultP = Ref{Cint}()
         GRBcbget(cb_data, cb_where, GRB_CB_MIP_NODCNT, resultP) # Current node count.
-        nodecnt = resultP[] 
+        nodecnt = resultP[]
         GRBcbget(cb_data, cb_where, GRB_CB_MIP_OBJBST, resultP) # Best objective value found so far.
         objbst = resultP[]
         GRBcbget(cb_data, cb_where, GRB_CB_MIP_OBJBND, resultP) # Bound on objective function.
-        objbnd = resultP[] 
+        objbnd = resultP[]
         GRBcbget(cb_data, cb_where, GRB_CB_MIP_SOLCNT, resultP) # Current solution count.
-        solcnt = resultP[] 
+        solcnt = resultP[]
         GRBcbget(cb_data, cb_where, GRB_CB_MIP_ITRCNT, resultP) # Current iteration count.
-        itcnt = resultP[] 
+        itcnt = resultP[]
         GRBcbget(cb_data, cb_where, GRB_CB_MIP_CUTCNT, resultP) # Current cut count.
-        cutcnt = resultP[] 
-        println("Iteracao ", itcnt, ": nodecnt = ", nodecnt, " objbst = ", objbst, " objbnd = ", objbnd, " solcnt = ", solcnt, " cutcnt = ", cutcnt)
+        cutcnt = resultP[]
+        println(
+            "Iteracao ",
+            itcnt,
+            ": nodecnt = ",
+            nodecnt,
+            " objbst = ",
+            objbst,
+            " objbnd = ",
+            objbnd,
+            " solcnt = ",
+            solcnt,
+            " cutcnt = ",
+            cutcnt,
+        )
     elseif cb_where == GRB_CB_MIPSOL #MIPSOL callback
         resultP = Ref{Cint}()
         GRBcbget(cb_data, cb_where, GRB_CB_MIPSOL_NODCNT, resultP) # Current node count.
-        nodecnt = resultP[] 
+        nodecnt = resultP[]
         GRBcbget(cb_data, cb_where, GRB_CB_MIPSOL_OBJBST, resultP) # Best objective value found so far.
         objbst = resultP[]
         GRBcbget(cb_data, cb_where, GRB_CB_MIPSOL_OBJBND, resultP) # Bound on objective function.
-        objbnd = resultP[] 
+        objbnd = resultP[]
         GRBcbget(cb_data, cb_where, GRB_CB_MIPSOL_SOLCNT, resultP) # Current solution count.
-        solcnt = resultP[] 
+        solcnt = resultP[]
         GRBcbget(cb_data, cb_where, GRB_CB_MIPSOL_SOL, resultP) # Current solution.
         solution = resultP[]
-        println("**** Nova Solução no nó ", nodecnt, " obj= ", objbst, " sol = ", solcnt, " *****")
+        println(
+            "**** Nova Solução no nó ",
+            nodecnt,
+            " obj= ",
+            objbst,
+            " sol = ",
+            solcnt,
+            " *****",
+        )
     elseif cb_where == GRB_CB_MIPNODE #MIPNODE callback
         resultP = Ref{Cint}()
-        println("**** Novo nó! ****");
+        println("**** Novo nó! ****")
         GRBcbget(cb_data, cb_where, GRB_CB_MIPNODE_NODCNT, resultP) # Current node count.
         println("Nó: ", resultP[])
         GRBcbget(cb_data, cb_where, GRB_CB_MIPNODE_STATUS, resultP) # Current node status.
-        status = resultP[] 
+        status = resultP[]
         println("Status: ", status)
     end
 end

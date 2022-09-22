@@ -20,10 +20,10 @@ mochila = Model(Gurobi.Optimizer)
 @variable(mochila, x[j in 1:n], Int)
 
 # Função Objetivo
-@objective(mochila, Max, sum(c[j]*x[j] for j in 1:n))
+@objective(mochila, Max, sum(c[j] * x[j] for j = 1:n))
 
 # Restrições
-@constraint(mochila, sum(a[j]*x[j] for j in 1:n) <= b)
+@constraint(mochila, sum(a[j] * x[j] for j = 1:n) <= b)
 
 optimize!(mochila)
 
@@ -31,6 +31,6 @@ optimize!(mochila)
 
 value.(x)
 
-println("Soma dos pesos dos itens escolhidos: ", sum(a[j]*value(x[j]) for j in 1:n))
+println("Soma dos pesos dos itens escolhidos: ", sum(a[j] * value(x[j]) for j = 1:n))
 println("Capacidade máxima da mochila: ", b)
 println("O custo ótimo foi: ", objective_value(mochila))

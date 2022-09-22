@@ -3,7 +3,7 @@ function leitura_arquivo()
        Função para fazer a leitura da instância a ser resolvida
        Retorna as informações sobre a instância
     =#
-end 
+end
 
 function subproblema_lagrangeano(u)
     #=
@@ -20,13 +20,13 @@ end
 
 function subgradiente(maxIter, p_i, p_i_min, eps)
     u = zeros(dimensão) # Colocar a dimensão do multiplicador
-    best_lim_inf = 0 
+    best_lim_inf = 0
     best_lim_sup = 9999999
     improve = 0
 
     ub, x_viavel = solucao_viavel()
 
-    for k ∈ 1:maxIter 
+    for k ∈ 1:maxIter
         z, x_sub = subproblema_lagrangeano(u)
 
         #=
@@ -38,7 +38,7 @@ function subgradiente(maxIter, p_i, p_i_min, eps)
         Atualizar o valor da solução viável a partir de u (ou da solução do subproblema)
         Se a nova solução viável encontrada for melhor que a melhor encontrada até então, atualize o best_lim!
         =#
-        
+
         #=
         Condições de otimalidade
             Se best_lim_sup - best_lim_inf for menor que 1, então pare! 
@@ -53,10 +53,10 @@ function subgradiente(maxIter, p_i, p_i_min, eps)
         Redução de pi.
            Sempre que maxIter/20 iterações consecutivas ocorrem sem melhora em z,
            isto é, improve >= maxIter/20 reduza pi, fazendo pi = pi/2
-           
+
            Se ao reduzir o pi, ele for tão pequeno quanto pi_min, pare!
         =#
-        
+
         #= 
         Calcular o tamanho de passo.
             Calcular soma_s como sendo a "restrição dualizada" nas variáveis do subproblema
@@ -70,7 +70,7 @@ function subgradiente(maxIter, p_i, p_i_min, eps)
         Para todo i, fazer
             u[i] = max{0, u[i] + (1+eps)*T*s[i]}
         =#
-    end 
+    end
 
     # retornar melhor solução encontrada e os melhores limites
 end

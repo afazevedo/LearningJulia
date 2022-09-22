@@ -2,7 +2,7 @@
 Arquivo para mostrar utilidades da linguagem Julia
 Autor: Amanda Ferreira de Azevedo
 Data: 20/09/2020
-=# 
+=#
 
 # Pacote muito bom para grafos: Graphs 
 # https://juliagraphs.org/Graphs.jl/dev/
@@ -16,13 +16,15 @@ G = SimpleGraph(n) # Definição de um grafo simples com n vértices
 
 c = rand((1:10), n, n) # Matriz de custos aleatórios tamanho nxn com valores entre 1 e 10
 
-for i in 1:n
-    for j in (i+1):n
+for i = 1:n
+    for j = (i+1):n
         if c[i, j] != 0
             add_edge!(G, i, j) # Adiciona uma aresta entre os vértices i e j
         end
     end
 end
+
+has_edge(G, 2, 1)
 
 rem_edge!(G, 1, 2) # Remove a aresta entre os vértices 1 e 2
 
@@ -37,6 +39,7 @@ T = SimpleGraph(nv(G))
 for edge in T_out
     add_edge!(T, edge)
 end
+
 
 # Pacote para plotar grafos
 using GraphPlot

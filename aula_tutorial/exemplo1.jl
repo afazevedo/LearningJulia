@@ -13,11 +13,11 @@ m = Model(GLPK.Optimizer)
 @variable(m, x2)
 
 # Definição da Função Objetivo
-@objective(m, Max, x1 + 0.64*x2)
+@objective(m, Max, x1 + 0.64 * x2)
 
 # Definição das Restrições
-@constraint(m, 50*x1 + 31*x2 <= 250)
-@constraint(m, 3*x1 - 2*x2 >= -4)
+@constraint(m, 50 * x1 + 31 * x2 <= 250)
+@constraint(m, 3 * x1 - 2 * x2 >= -4)
 optimize!(m)
 
 value(x1)

@@ -1,11 +1,11 @@
 using Gurobi, JuMP
 
 a = [
-1 0 1 0
-0 0 1 1
-0 0 0 1
-1 1 0 0
-1 1 1 0
+    1 0 1 0
+    0 0 1 1
+    0 0 0 1
+    1 1 0 0
+    1 1 1 0
 ]
 
 c = [10 40 20 30]
@@ -18,9 +18,9 @@ m = Model(Gurobi.Optimizer)
 
 @variable(m, x[j in N], Bin)
 
-@constraint(m, cover[i in M], sum(a[i,j]*x[j] for j in N) >= 1)
+@constraint(m, cover[i in M], sum(a[i, j] * x[j] for j in N) >= 1)
 
-@objective(m, Min, sum(c[j]*x[j] for j in N))
+@objective(m, Min, sum(c[j] * x[j] for j in N))
 
 print(m)
 

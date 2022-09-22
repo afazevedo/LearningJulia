@@ -1,9 +1,9 @@
 using DelimitedFiles, Gurobi, JuMP, Dictionaries
 
-path = pwd()*"\\leitura_de_arquivo\\instancias\\"
-arq_ass = path*"assign100.txt"
-arq_spl = path*"123Unif.txt"
-arq_knap = path*"fl_l-d_kp_10_269.txt"
+path = pwd() * "\\leitura_de_arquivo\\instancias\\"
+arq_ass = path * "assign100.txt"
+arq_spl = path * "123Unif.txt"
+arq_knap = path * "fl_l-d_kp_10_269.txt"
 
 number_of_lines = countlines(arq_knap)
 
@@ -20,25 +20,25 @@ f = readdlm(arq_spl)[3, 2]
 
 c = zeros(Int64, (n, n))
 
-for line in 5:number_of_lines
+for line = 5:number_of_lines
     i = readdlm(arq_spl)[line, 1]
     j = readdlm(arq_spl)[line, 2]
-    c[i,j] = readdlm(arq_spl)[line, 3]
+    c[i, j] = readdlm(arq_spl)[line, 3]
 end
 
 
 #==================================#
 
-path = pwd()*"\\leitura_de_arquivo\\instancias\\"
-arq_ass = path*"assign100.txt"
-arq_spl = path*"123Unif.txt"
-arq_knap = path*"mknap1.txt"
+path = pwd() * "\\leitura_de_arquivo\\instancias\\"
+arq_ass = path * "assign100.txt"
+arq_spl = path * "123Unif.txt"
+arq_knap = path * "mknap1.txt"
 
 n = readdlm(arq_ass)[1]
 c = zeros(n, n)
 i = 1
 it = 0
-for line in 2:countlines(arq_ass)
+for line = 2:countlines(arq_ass)
     lin = readdlm(arq_ass)[line, :]
     for elem in lin
         if elem != ""
