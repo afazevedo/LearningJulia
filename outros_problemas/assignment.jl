@@ -1,15 +1,17 @@
+using JuMP, CPLEX
+
 #Dados
 c = [
-    35 20 15 12
-    23 10 23 13
-    18 12 15 11
-    23 32 12 22
+    6 4 5 7
+    2 3 6 6
+    5 1 4 3
+    7 5 5 5
 ]
 
-n = 4
+n = size(c)[1]
 
 # Modelo 
-model = Model(Gurobi.Optimizer)
+model = Model(CPLEX.Optimizer)
 
 # Definição das variáveis 
 @variable(model, x[i in 1:n, j in 1:n], Bin)
